@@ -41,6 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.raisePropChkbox = new System.Windows.Forms.CheckBox();
+            this.NullCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -59,13 +60,13 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.YellowGreen;
-            this.button1.Location = new System.Drawing.Point(261, 185);
+            this.button1.Location = new System.Drawing.Point(1044, 188);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(88, 41);
             this.button1.TabIndex = 1;
             this.button1.Text = "Generate";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // textBox2
             // 
@@ -73,6 +74,7 @@
             this.textBox2.Location = new System.Drawing.Point(12, 237);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
+            this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox2.Size = new System.Drawing.Size(1282, 366);
             this.textBox2.TabIndex = 2;
             // 
@@ -113,7 +115,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button2.Location = new System.Drawing.Point(377, 185);
+            this.button2.Location = new System.Drawing.Point(1160, 188);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(99, 41);
             this.button2.TabIndex = 4;
@@ -161,10 +163,11 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.NullCheckBox);
             this.groupBox3.Controls.Add(this.raisePropChkbox);
             this.groupBox3.Location = new System.Drawing.Point(12, 177);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(232, 54);
+            this.groupBox3.Size = new System.Drawing.Size(1015, 54);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Output Format";
@@ -178,6 +181,16 @@
             this.raisePropChkbox.TabIndex = 0;
             this.raisePropChkbox.Text = "Include RaisePropertyChanged()";
             this.raisePropChkbox.UseVisualStyleBackColor = true;
+            // 
+            // NullCheckBox
+            // 
+            this.NullCheckBox.AutoSize = true;
+            this.NullCheckBox.Location = new System.Drawing.Point(215, 24);
+            this.NullCheckBox.Name = "NullCheckBox";
+            this.NullCheckBox.Size = new System.Drawing.Size(113, 17);
+            this.NullCheckBox.TabIndex = 1;
+            this.NullCheckBox.Text = "Include NullCheck";
+            this.NullCheckBox.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -219,6 +232,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox raisePropChkbox;
+        private System.Windows.Forms.CheckBox NullCheckBox;
     }
 }
 
