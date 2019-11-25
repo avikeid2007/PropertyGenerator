@@ -18,7 +18,7 @@ namespace WindowsFormsApp3
             raisePropChkbox.Checked = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             try
             {
@@ -26,32 +26,49 @@ namespace WindowsFormsApp3
                 MessageBox.Show(length.ToString() + " Properties need to created");
                 string PrivatePropertyString = string.Empty;
                 string PublicPropertyString = string.Empty;
-                for (int i = 0; i < length ; i++)
+                for (int i = 0; i < length; i++)
                 {
-                    if (!string.IsNullOrEmpty(textBox1.Lines[i].Trim()))
+                    var currertLine = textBox1.Lines[i].Trim();
+                    if (!string.IsNullOrEmpty(currertLine))
                     {
-                        if (!textBox1.Lines[i].Trim().Contains(":") || !textBox1.Lines[i].Trim().Contains("\""))
+                        if (!currertLine.Contains(":") || !currertLine.Contains("\""))
                         {
-                            if (textBox1.Lines[i].Trim().Contains("public") || textBox1.Lines[i].Trim().Contains("private"))
+                            if (currertLine.Contains("public") || currertLine.Contains("private"))
                             {
-                                string[] ssize = textBox1.Lines[i].Trim().Split(new char[0]);
+                                string[] ssize = currertLine.Split(new char[0]);
                                 string propertyName = "_" + ssize[2].Replace(ssize[2][0], ssize[2][0].ToString().ToLower()[0]);
                                 PrivatePropertyString += "private " + ssize[1] + " " + propertyName + "; \r\n";
                                 PublicPropertyString += "\r\n public " + ssize[1] + " " + ssize[2] + "\r\n";
                                 PublicPropertyString += "{ \r\n" + "get { return " + propertyName + " ;}" + "\r\n";
                                 PublicPropertyString += "set \r\n {" + "\r\n";
+                                if (NullCheckBox.Checked)
+                                {
+                                    PublicPropertyString += " if (" + propertyName + "!= value)" + "\r\n {";
+                                }
                                 PublicPropertyString += propertyName + "= value;" + "\r\n" + (raisePropChkbox.Checked ? "RaisePropertyChanged();" + "\r\n" : "");
+                                if (NullCheckBox.Checked)
+                                {
+                                    PublicPropertyString += "} \r\n ";
+                                }
                                 PublicPropertyString += "} \r\n }";
                             }
                             else
                             {
-                                string[] ssize = textBox1.Lines[i].Trim().Split(new char[0]);
+                                string[] ssize = currertLine.Split(new char[0]);
                                 string propertyName = "_" + ssize[1].Replace(ssize[1][0], ssize[1][0].ToString().ToLower()[0]);
                                 PrivatePropertyString += "private " + ssize[0] + " " + propertyName + "; \r\n";
                                 PublicPropertyString += "\r\n public " + ssize[0] + " " + ssize[1] + "\r\n";
                                 PublicPropertyString += "{ \r\n" + "get { return " + propertyName + " ;}" + "\r\n";
                                 PublicPropertyString += "set \r\n {" + "\r\n";
+                                if (NullCheckBox.Checked)
+                                {
+                                    PublicPropertyString += " if (" + propertyName + "!= value)" + "\r\n {";
+                                }
                                 PublicPropertyString += propertyName + "= value;" + "\r\n" + (raisePropChkbox.Checked ? "RaisePropertyChanged();" + "\r\n" : "");
+                                if (NullCheckBox.Checked)
+                                {
+                                    PublicPropertyString += "} \r\n ";
+                                }
                                 PublicPropertyString += "} \r\n }";
                             }
                         }
